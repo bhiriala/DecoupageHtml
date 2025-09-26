@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="EasyMart - Produits frais et promotions" />
+  <title>EasyMart — Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="antialiased text-gray-700 bg-white">
+
+  <header class="fixed top-0 w-full z-50 bg-white border-b border-[#F8F7F8]" id="site-header">
+    <div class="container mx-auto px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-5">
+        <img src="assets/images/logo.svg" alt="EasyMart" class="hidden md:block w-[134px] h-[32px]" />
+        <div class="lg:flex items-center gap-2 text-sm text-neutral-500">
+          <img src="assets/images/location.svg" alt="location" class="h-5 w-5" />
+          <span class="font-montserrat font-medium text-[#3E3B3F]">10115 New York</span>
+        </div>
+      </div>
+
+      <div class="hidden md:block relative w-[458px]">
+          <button  type="button" class="absolute bg-pink-100 left-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full focus:outline-none" aria-hidden="true">
+            <img src="assets/images/search.svg" alt="location" class="h-4 w-4" />
+          </button>
+          <input 
+            placeholder="Search by" 
+            class="font-montserrat placeholder-[#3E3B3F] font-normal w-full px-11 py-3 rounded-[32px] border border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-300 text-sm" 
+          />
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="/pages/cart.html" class="relative inline-flex items-center gap-1 px-3 py-2 rounded-full bg-pink-100 hover:bg-gray-50 focus:outline-none focus:ring-2" aria-label="Voir le panier">
+          <div class="relative flex items-center bg-white rounded-full p-1">
+            <img src="assets/images/cart.svg" alt="cart" aria-hidden="true" class="h-4 w-4" />
+            <span class="inline-flex items-center justify-center h-4 w-4 text-xs font-semibold rounded-full text-pink-700">
+              14
+            </span>
+          </div>
+
+          
+          <span class="font-medium hidden lg:inline text-sm">Cart</span>
+          
+        </a>
+
+        <a href="/pages/login.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pink-500 text-sm font-medium focus:outline-none focus:ring-2" aria-label="Se connecter">
+          <img src="assets/images/login.svg" alt="" aria-hidden="true" class="h-4 w-4" />
+          <span>Login</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-24"> 
+    <section aria-labelledby="home-hero" class="container mx-auto px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
+        <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" col-span="5" height="64" md-height="80"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" col-span="4" height="64" md-height="80"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" col-span="3" height="64" md-height="80"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Produit promo" col-span="3" height="44" md-height="56"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Collection secondaire" col-span="6" height="44" md-height="56"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Nouveautés" col-span="3" height="44" md-height="56"></hero-card>
+      </div>
+    </section>
+
+    <section aria-labelledby="cats" class="mt-8">
+      <div class="container mx-auto px-6 lg:px-8">
+
+        <nav aria-label="Liste des catégories" class="overflow-x-auto scrollbar-hide py-4">
+          <ul class="flex items-center gap-3 whitespace-nowrap">
+            <nav-item-category href="#" img-src="assets/images/bread.svg" img-alt="Bread" label="Bread"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/cheese.svg" img-alt="Cheese" label="Cheese"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/alcohol.svg" img-alt="alcohol" label="alcohol"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/cake.svg" img-alt="cake" label="cake"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/candy.svg" img-alt="candy" label="candy"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/fruits.svg"  img-alt="fruits" label="fruits"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/snacks.svg"  img-alt="snacks" label="snacks"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/vegetables.svg"  img-alt="vegetables" label="vegetables"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/watermelon.svg"  img-alt="watermelon" label="watermelon"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/yogurt.svg"  img-alt="yogurt" label="yogurt"></nav-item-category>
+          </ul>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+
+  <script src="assets/js/web-components/hero-card.js" type="module"></script>
+  <script src="assets/js/web-components/nav_item-category.js" type="module"></script>
+  <script>
+    const header = document.getElementById('site-header');
+    const onScroll = () => {
+      if (window.scrollY > 20) header.classList.add('shadow-md');
+      else header.classList.remove('shadow-md');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  </script>
+</body>
+</html>

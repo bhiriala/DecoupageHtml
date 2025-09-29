@@ -15,13 +15,13 @@
 </head>
 <body class="antialiased text-gray-700 bg-white">
 
-  <header class="fixed top-0 w-full z-50 bg-white border-b border-[#F8F7F8]" id="site-header">
-    <div class="container mx-auto px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+  <header class="fixed top-0 w-full z-50 bg-white border-b border-[#F8F7F8]"  id="site-header">
+    <div class="container mx-auto px-6 lg:px-8 py-4 flex items-center justify-between gap-4 text-[#3E3B3F]">
       <div class="flex items-center gap-5">
         <img src="assets/images/logo.svg" alt="EasyMart" class="hidden md:block w-[134px] h-[32px]" />
         <div class="lg:flex items-center gap-2 text-sm text-neutral-500">
           <img src="assets/images/location.svg" alt="location" class="h-5 w-5" />
-          <span class="font-montserrat font-medium text-[#3E3B3F]">10115 New York</span>
+          <span class="font-montserrat font-medium text-[#3E3B3F] ">10115 New York</span>
         </div>
       </div>
 
@@ -39,18 +39,18 @@
         <a href="/pages/cart.html" class="relative inline-flex items-center gap-1 px-3 py-2 rounded-full bg-pink-100 hover:bg-gray-50 focus:outline-none focus:ring-2" aria-label="Voir le panier">
           <div class="relative flex items-center bg-white rounded-full p-1">
             <img src="assets/images/cart.svg" alt="cart" aria-hidden="true" class="h-4 w-4" />
-            <span class="inline-flex items-center justify-center h-4 w-4 text-xs font-semibold rounded-full text-pink-700">
+            <span class="inline-flex items-center justify-center h-4 w-4 text-xs font-inter font-bold rounded-full text-pink-700">
               14
             </span>
           </div>
 
           
-          <span class="font-medium hidden lg:inline text-sm">Cart</span>
+          <span class="font-inter font-medium hidden lg:inline text-sm ">Cart</span>
           
         </a>
 
-        <a href="/pages/login.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pink-500 text-sm font-medium focus:outline-none focus:ring-2" aria-label="Se connecter">
-          <img src="assets/images/login.svg" alt="" aria-hidden="true" class="h-4 w-4" />
+        <a href="/pages/login.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pink-500 text-sm  font-medium focus:outline-none focus:ring-2" aria-label="Se connecter">
+          <img src="assets/images/login.svg" alt="" aria-hidden="true" class="h-4 w-4 " />
           <span>Login</span>
         </a>
       </div>
@@ -59,16 +59,34 @@
 
   <main class="pt-24"> 
     <section aria-labelledby="home-hero" class="container mx-auto px-6 lg:px-8">
-
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
-        <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" col-span="5" height="64" md-height="80"></hero-card>
-        <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" col-span="4" height="64" md-height="80"></hero-card>
-        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" col-span="3" height="64" md-height="80"></hero-card>
-        <hero-card src="assets/images/image-vide.png" alt="Produit promo" col-span="3" height="44" md-height="56"></hero-card>
-        <hero-card src="assets/images/image-vide.png" alt="Collection secondaire" col-span="6" height="44" md-height="56"></hero-card>
-        <hero-card src="assets/images/image-vide.png" alt="Nouveautés" col-span="3" height="44" md-height="56"></hero-card>
+  <!-- Première ligne scrollable -->
+  <div class="relative mb-3 lg:mb-4">
+    <div class="overflow-x-auto scrollbar-hide scroll-container">
+      <div class="flex gap-3 lg:gap-4 pb-2">
+        <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="500" height="64" md-height="80"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="400" height="64" md-height="80"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="64" md-height="80"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="64" md-height="80"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="500" height="64" md-height="80"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="400" height="64" md-height="80"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="64" md-height="80"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="64" md-height="80"></hero-card>
       </div>
-    </section>
+    </div>
+  </div>
+  
+  <!-- Deuxième ligne scrollable -->
+  <div class="relative">
+    <div class="overflow-x-auto scrollbar-hide scroll-container">
+      <div class="flex gap-3 lg:gap-4 pb-2">
+        <hero-card src="assets/images/image-vide.png" alt="Produit promo" width="300" height="44" md-height="56"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Collection secondaire" width="600" height="44" md-height="56"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Nouveautés" width="300" height="44" md-height="56"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Nouveautés" width="300" height="44" md-height="56"></hero-card>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section aria-labelledby="cats" class="mt-8">
       <div class="container mx-auto px-6 lg:px-8">
@@ -91,7 +109,73 @@
     </section>
   </main>
 
-
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.scroll-container').forEach(container => {
+    const wrapper = container.parentElement;
+    
+    // Créer les boutons
+    const prevBtn = document.createElement('button');
+    const nextBtn = document.createElement('button');
+    
+    prevBtn.innerHTML = '←';
+    nextBtn.innerHTML = '→';
+    prevBtn.setAttribute('aria-label', 'Défiler vers la gauche');
+    nextBtn.setAttribute('aria-label', 'Défiler vers la droite');
+    
+    prevBtn.className = 'absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full w-10 h-10 shadow-lg z-10 hover:bg-gray-100 transition-all opacity-0 pointer-events-none';
+    nextBtn.className = 'absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full w-10 h-10 shadow-lg z-10 hover:bg-gray-100 transition-all';
+    
+    // Fonction pour vérifier si on peut scroller
+    function updateButtonsVisibility() {
+      const scrollLeft = container.scrollLeft;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      
+      if (scrollLeft > 10) {
+        prevBtn.classList.remove('opacity-0', 'pointer-events-none');
+      } else {
+        prevBtn.classList.add('opacity-0', 'pointer-events-none');
+      }
+      
+      if (scrollLeft < maxScroll - 10) {
+        nextBtn.classList.remove('opacity-0', 'pointer-events-none');
+      } else {
+        nextBtn.classList.add('opacity-0', 'pointer-events-none');
+      }
+    }
+    
+    // Événements de clic
+    prevBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      container.scrollBy({ 
+        left: -400, 
+        behavior: 'smooth' 
+      });
+    });
+    
+    nextBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      container.scrollBy({ 
+        left: 400, 
+        behavior: 'smooth' 
+      });
+    });
+    
+    // Écouter le scroll pour mettre à jour les boutons
+    container.addEventListener('scroll', updateButtonsVisibility);
+    
+    // Ajouter les boutons
+    wrapper.appendChild(prevBtn);
+    wrapper.appendChild(nextBtn);
+    
+    // Vérifier initialement
+    updateButtonsVisibility();
+    
+    // Vérifier après le chargement des images
+    setTimeout(updateButtonsVisibility, 500);
+  });
+});
+</script>
   <script src="assets/js/web-components/hero-card.js" type="module"></script>
   <script src="assets/js/web-components/nav_item-category.js" type="module"></script>
   <script>

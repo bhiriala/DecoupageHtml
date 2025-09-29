@@ -1,3 +1,28 @@
 .font-montserrat {
   font-family: 'Montserrat', sans-serif;
 }
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+/* Cacher la scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Style pour le conteneur parent */
+.scroll-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Assurer que le wrapper est positionné */
+.scroll-container:parent {
+  position: relative;
+}

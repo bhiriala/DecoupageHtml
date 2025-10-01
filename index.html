@@ -11,9 +11,18 @@
   <style>
     .scrollbar-hide::-webkit-scrollbar { display: none; }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    .container {
+      max-width: 1400px !important;
+    }
+    
+    @media (min-width: 1536px) {
+      .container {
+        max-width: 1600px !important;
+      }
+    }
   </style>
 </head>
-<body class="antialiased text-gray-700 bg-white">
+<body class=" text-[#0D0C0D] bg-white">
 
   <header class="fixed top-0 w-full z-50 bg-white border-b border-[#F8F7F8]"  id="site-header">
     <div class="container mx-auto px-6 lg:px-8 py-4 flex items-center justify-between gap-4 text-[#3E3B3F]">
@@ -58,29 +67,34 @@
   </header>
 
   <main class="pt-24"> 
-    <section aria-labelledby="home-hero" class="container mx-auto px-6 lg:px-8">
+    <section aria-labelledby="home-hero" class="container mx-auto pl-6 pr-17 lg:pl-8 lg:pr-12">
       <div class="mb-3 lg:mb-4">
-        <div class="overflow-x-auto scrollbar-hide scroll-container">
-          <div class="flex gap-3 lg:gap-4 pb-2">
-            <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="500" height="64" md-height="80"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="400" height="64" md-height="80"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="64" md-height="80"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="64" md-height="80"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="500" height="64" md-height="80"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="400" height="64" md-height="80"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="64" md-height="80"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="64" md-height="80"></hero-card>
+        <div class="overflow-x-auto scrollbar-hide scroll-container rounded-2xl">
+          <div class="flex gap-3 lg:gap-4 pb-2 ">
+            <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="570" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="600" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="550" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="500" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="400" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="47" md-height="60"></hero-card>
           </div>
         </div>
       </div>
       
       <div>
-        <div class="overflow-x-auto scrollbar-hide scroll-container">
+        <div class="overflow-x-auto scrollbar-hide scroll-container rounded-b-2xl">
           <div class="flex gap-3 lg:gap-4 pb-2">
-            <hero-card src="assets/images/image-vide.png" alt="Produit promo" width="300" height="44" md-height="56"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Collection secondaire" width="600" height="44" md-height="56"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Nouveautés" width="300" height="44" md-height="56"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Nouveautés" width="300" height="44" md-height="56"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Produit promo" width="450" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Collection secondaire" width="690" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Nouveautés" width="600" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Nouveautés" width="300" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="500" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="400" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="47" md-height="60"></hero-card>
+            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="47" md-height="60"></hero-card>
           </div>
         </div>
       </div>
@@ -108,639 +122,702 @@
 
 
     <section aria-labelledby="best-seller" class="mt-12 lg:mt-16">
-  <div class="container mx-auto px-6 lg:px-8">
-    
-    <div class="flex items-center justify-between mb-6">
-      <h2 id="best-seller" class="font-montserrat font-semibold text-base lg:text-xl text-[#0D0C0D]">
-        Best Seller
-      </h2>
-      
-      <div class="flex items-center gap-3">
-        <a 
-          href="/pages/category.html" 
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#B6349A] text-sm font-medium hover:bg-gray-50 focus:outline-none focus:ring-2"
-        >
-          <span class="font-inter font-semibold text-xs lg:text-sm text-[#0D0C0D]">View All (+40)</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </a>
+      <div class="container mx-auto px-6 lg:px-8">
         
-        <button 
-          id="prev-btn-bestseller" 
-          class="p-2 rounded-full border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2"
-          aria-label="Produit précédent"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-        </button>
-        
-        <button 
-          id="next-btn-bestseller" 
-          class="p-2 rounded-full border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2"
-          aria-label="Produit suivant"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Products Carousel -->
-    <div class="overflow-x-auto scrollbar-hide scroll-container" id="bestseller-scroll">
-      <div class="flex gap-4 pb-2">
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange fraîche"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="1"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/strawberry.png" 
-          img-alt="Fraises fraîches"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="2"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange bio"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="3"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/lime.png" 
-          img-alt="Citron vert"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="4"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange premium"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="5"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange fraîche"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="1"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/strawberry.png" 
-          img-alt="Fraises fraîches"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="2"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange bio"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="3"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/lime.png" 
-          img-alt="Citron vert"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="4"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange premium"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="5"
-        ></product-card>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section aria-labelledby="trending-favorites" class="mt-12 lg:mt-16">
-  <div class="container mx-auto px-6 lg:px-8">
-    
-    <!-- Header Section -->
-    <div class="flex items-center justify-between mb-6">
-      <h2 id="trending-favorites" class="font-montserrat font-bold text-2xl lg:text-3xl text-[#0D0C0D]">
-        Trending Store Favorites
-      </h2>
-      
-      <div class="flex items-center gap-3">
-        <a 
-          href="/pages/category.html" 
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium hover:bg-gray-50 focus:outline-none focus:ring-2"
-        >
-          <span class="font-inter text-[#0D0C0D]">View All</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </a>
-        
-        <!-- Navigation Arrows -->
-        <button 
-          id="prev-btn-trending" 
-          class="p-2 rounded-full border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2"
-          aria-label="Produit précédent"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-        </button>
-        
-        <button 
-          id="next-btn-trending" 
-          class="p-2 rounded-full border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2"
-          aria-label="Produit suivant"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Filter Tabs -->
-    <nav aria-label="Filtres de catégories tendances" class="mb-6">
-      <div class="flex flex-wrap gap-2">
-        <button 
-          class="filter-tab px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-pink-500 focus:outline-none focus:ring-2"
-          data-category="all"
-        >
-          Fresh bakery
-        </button>
-        <button 
-          class="filter-tab px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-pink-500 focus:outline-none focus:ring-2"
-          data-category="bakery"
-        >
-          Fresh bakery
-        </button>
-        <button 
-          class="filter-tab active px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-white border-2 border-pink-500 text-[#0D0C0D] focus:outline-none focus:ring-2"
-          data-category="special"
-        >
-          Fresh bakery
-        </button>
-        <button 
-          class="filter-tab px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-pink-500 focus:outline-none focus:ring-2"
-          data-category="organic"
-        >
-          Fresh bakery
-        </button>
-        <button 
-          class="filter-tab px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-pink-500 focus:outline-none focus:ring-2"
-          data-category="fresh"
-        >
-          Fresh bakery
-        </button>
-      </div>
-      
-      <!-- Second Row of Filters -->
-      <div class="flex flex-wrap gap-2 mt-2">
-        <button 
-          class="filter-tab px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-pink-500 focus:outline-none focus:ring-2"
-          data-category="bakery2"
-        >
-          Fresh bakery
-        </button>
-        <button 
-          class="filter-tab px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-pink-500 focus:outline-none focus:ring-2"
-          data-category="bakery3"
-        >
-          Fresh bakery
-        </button>
-        <button 
-          class="filter-tab px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-pink-500 focus:outline-none focus:ring-2"
-          data-category="bakery4"
-        >
-          Fresh bakery
-        </button>
-        <button 
-          class="filter-tab px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-pink-500 focus:outline-none focus:ring-2"
-          data-category="bakery5"
-        >
-          Fresh bakery
-        </button>
-        <button 
-          class="filter-tab px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-pink-500 focus:outline-none focus:ring-2"
-          data-category="bakery6"
-        >
-          Fresh bakery
-        </button>
-      </div>
-    </nav>
-
-    <!-- Products Carousel -->
-    <div class="overflow-x-auto scrollbar-hide scroll-container" id="trending-scroll">
-      <div class="flex gap-4 pb-2">
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange fraîche"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="6"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange bio"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="7"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange premium"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="8"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange juteuse"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="9"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange sucrée"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="10"
-        ></product-card>
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange fraîche"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="6"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange bio"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="7"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange premium"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="8"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange juteuse"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="9"
-        ></product-card>
-
-        <product-card 
-          img-src="assets/images/orange.png" 
-          img-alt="Orange sucrée"
-          title="This is product a"
-          price-unit="$2.71/lb"
-          price="$99.99"
-          old-price="$99.99"
-          stock-left="12"
-          stock-total="12"
-          product-id="10"
-        ></product-card>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section aria-labelledby="order-cta" class="mt-12 lg:mt-16">
-  <div class="container mx-auto px-6 lg:px-8">
-    
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-gradient-to-br from-pink-50 to-purple-50 rounded-3xl p-8 lg:p-12">
-      
-      <!-- Left Side: Products Grid -->
-      <div class="order-2 lg:order-1">
-        <div class="grid grid-cols-3 gap-4">
+        <div class="flex items-center justify-between ">
+          <p id="best-seller" class="font-montserrat font-weight-600 font-semibold text-base lg:text-xl">
+            Best Seller
+          </p>
           
-          <!-- Product Card 1 -->
-          <article class="relative bg-white rounded-2xl p-4 shadow-sm">
-            <!-- Check Badge -->
-            <div class="absolute -top-2 -right-2 z-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full p-1.5 shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+          <div class="flex items-center gap-4">
+            <a 
+              href="/pages/category.html" 
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#B6349A] text-sm font-medium hover:bg-gray-50 focus:outline-none focus:ring-2"
+            >
+              <span class="font-montserrat font-semibold text-xs lg:text-sm lg:font-inter">View All (+40)</span>
+              <img src="assets/images/viewAllFleche.svg" alt="" aria-hidden="true" class="h-5 w-5 " />
+            </a>
+            
+            <button 
+              id="prev-btn-bestseller" 
+              class="hidden lg:inline-flex p-2 rounded-full border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2"
+              aria-label="Produit précédent"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
               </svg>
-            </div>
+            </button>
             
-            <!-- Product Image -->
-            <div class="bg-gray-50 rounded-xl mb-3 h-[100px] flex items-center justify-center overflow-hidden">
-              <img 
-                src="assets/images/orange.png" 
-                alt="Orange fraîche" 
-                class="w-full h-full object-contain p-2"
-                loading="lazy"
-              />
-            </div>
-            
-            <!-- Product Info -->
-            <div class="space-y-1">
-              <h3 class="font-montserrat font-medium text-xs text-[#0D0C0D] line-clamp-2">
-                This is product a
-              </h3>
-              <p class="font-inter text-[10px] text-gray-500">$2.71/lb</p>
-              <div class="flex items-center gap-1">
-                <span class="font-montserrat font-bold text-sm text-[#0D0C0D]">$99.99</span>
-                <span class="font-inter text-[10px] text-gray-400 line-through">$99.99</span>
-              </div>
-              <div class="flex items-center gap-1">
-                <span class="font-inter font-semibold text-[10px] text-[#E91E63]">12 Left</span>
-                <span class="font-inter text-[10px] text-gray-500">12 Left</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product Card 2 -->
-          <article class="relative bg-white rounded-2xl p-4 shadow-sm">
-            <!-- Check Badge -->
-            <div class="absolute -top-2 -right-2 z-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full p-1.5 shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+            <button 
+              id="next-btn-bestseller" 
+              class="hidden lg:inline-flex p-2 rounded-full border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2"
+              aria-label="Produit suivant"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
               </svg>
-            </div>
-            
-            <!-- Product Image -->
-            <div class="bg-gray-50 rounded-xl mb-3 h-[100px] flex items-center justify-center overflow-hidden">
-              <img 
-                src="assets/images/orange.png" 
-                alt="Orange bio" 
-                class="w-full h-full object-contain p-2"
-                loading="lazy"
-              />
-            </div>
-            
-            <!-- Product Info -->
-            <div class="space-y-1">
-              <h3 class="font-montserrat font-medium text-xs text-[#0D0C0D] line-clamp-2">
-                This is product a
-              </h3>
-              <p class="font-inter text-[10px] text-gray-500">$2.71/lb</p>
-              <div class="flex items-center gap-1">
-                <span class="font-montserrat font-bold text-sm text-[#0D0C0D]">$99.99</span>
-                <span class="font-inter text-[10px] text-gray-400 line-through">$99.99</span>
-              </div>
-              <div class="flex items-center gap-1">
-                <span class="font-inter font-semibold text-[10px] text-[#E91E63]">12 Left</span>
-                <span class="font-inter text-[10px] text-gray-500">12 Left</span>
-              </div>
-            </div>
-          </article>
+            </button>
+          </div>
 
-          <!-- Product Card 3 -->
-          <article class="relative bg-white rounded-2xl p-4 shadow-sm">
-            <!-- Check Badge -->
-            <div class="absolute -top-2 -right-2 z-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full p-1.5 shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
-              </svg>
-            </div>
-            
-            <!-- Product Image -->
-            <div class="bg-gray-50 rounded-xl mb-3 h-[100px] flex items-center justify-center overflow-hidden">
-              <img 
-                src="assets/images/orange.png" 
-                alt="Orange premium" 
-                class="w-full h-full object-contain p-2"
-                loading="lazy"
-              />
-            </div>
-            
-            <!-- Product Info -->
-            <div class="space-y-1">
-              <h3 class="font-montserrat font-medium text-xs text-[#0D0C0D] line-clamp-2">
-                This is product a
-              </h3>
-              <p class="font-inter text-[10px] text-gray-500">$2.71/lb</p>
-              <div class="flex items-center gap-1">
-                <span class="font-montserrat font-bold text-sm text-[#0D0C0D]">$99.99</span>
-                <span class="font-inter text-[10px] text-gray-400 line-through">$99.99</span>
-              </div>
-              <div class="flex items-center gap-1">
-                <span class="font-inter font-semibold text-[10px] text-[#E91E63]">12 Left</span>
-                <span class="font-inter text-[10px] text-gray-500">12 Left</span>
-              </div>
-            </div>
-          </article>
+        </div>
 
+        <div class="overflow-x-auto scrollbar-hide scroll-container" id="bestseller-scroll">
+          <div class="flex gap-1 pb-2">
+            <product-card 
+              img-src="assets/images/orange.png" 
+              img-alt="Orange fraîche"
+              title="This is product a"
+              price-unit="$2.71/lb"
+              price="$99.99"
+              old-price="$99.99"
+              stock-left="12"
+              stock-total="12"
+              product-id="1"
+            ></product-card>
+
+            <product-card 
+              img-src="assets/images/fraise.png" 
+              img-alt="Fraises fraîches"
+              title="This is product a"
+              price-unit="$2.71/lb"
+              price="$99.99"
+              old-price="$99.99"
+              stock-left="12"
+              stock-total="12"
+              product-id="2"
+            ></product-card>
+
+            <product-card 
+              img-src="assets/images/orange.png" 
+              img-alt="Orange bio"
+              title="This is product a"
+              price-unit="$2.71/lb"
+              price="$99.99"
+              old-price="$99.99"
+              stock-left="12"
+              stock-total="12"
+              product-id="3"
+            ></product-card>
+
+            <product-card 
+              img-src="assets/images/leoman.png" 
+              img-alt="Citron vert"
+              title="This is product a"
+              price-unit="$2.71/lb"
+              price="$99.99"
+              old-price="$99.99"
+              stock-left="12"
+              stock-total="12"
+              product-id="4"
+            ></product-card>
+
+            <product-card 
+              img-src="assets/images/orange.png" 
+              img-alt="Orange premium"
+              title="This is product a"
+              price-unit="$2.71/lb"
+              price="$99.99"
+              old-price="$99.99"
+              stock-left="12"
+              stock-total="12"
+              product-id="5"
+            ></product-card>
+
+            <product-card 
+              img-src="assets/images/orange.png" 
+              img-alt="Orange fraîche"
+              title="This is product a"
+              price-unit="$2.71/lb"
+              price="$99.99"
+              old-price="$99.99"
+              stock-left="12"
+              stock-total="12"
+              product-id="1"
+            ></product-card>
+
+            <product-card 
+              img-src="assets/images/fraise.png" 
+              img-alt="Fraises fraîches"
+              title="This is product a"
+              price-unit="$2.71/lb"
+              price="$99.99"
+              old-price="$99.99"
+              stock-left="12"
+              stock-total="12"
+              product-id="2"
+            ></product-card>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Right Side: CTA Content -->
-      <div class="order-1 lg:order-2 text-center lg:text-left">
+  <section aria-labelledby="trending-favorites" class="mt-12 lg:mt-16 ">
+    <div class="container mx-auto px-6 lg:px-8 border border-[#F0EEF0] p-6 rounded-[32px]">
+      
+      <div class="flex items-center justify-between mb-6">
+        <p id="trending-favorites" class="font-inter font-semibold text-xl lg:text-2xl">
+          Trending Store Favorites
+        </p>
         
-        <!-- Promo Badge -->
-        <div class="inline-block mb-4">
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white text-sm font-semibold shadow-lg">
-            Get 10% OFF On Your First Order
-          </span>
-        </div>
-
-        <!-- Main Title -->
-        <h2 id="order-cta" class="font-montserrat font-bold text-3xl lg:text-4xl xl:text-5xl text-[#0D0C0D] mb-6 leading-tight">
-          Order Now Your Grocery!
-        </h2>
-
-        <!-- Category Tags Grid -->
-        <div class="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
-          <span class="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium text-[#0D0C0D] shadow-sm">
-            Beef
-          </span>
-          <span class="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium text-[#0D0C0D] shadow-sm">
-            Rice
-          </span>
-          <span class="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium text-[#0D0C0D] shadow-sm">
-            Fresh bakery
-          </span>
-          <span class="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium text-[#0D0C0D] shadow-sm">
-            Fresh bakery
-          </span>
-          <span class="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium text-[#0D0C0D] shadow-sm">
-            Fresh bakery
-          </span>
-          <span class="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium text-[#0D0C0D] shadow-sm">
-            Fresh bakery
-          </span>
-          <span class="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium text-[#0D0C0D] shadow-sm">
-            Fresh bakery
-          </span>
-          <span class="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium text-[#0D0C0D] shadow-sm">
-            Fresh bakery
-          </span>
-        </div>
-
-        <!-- CTA Button -->
-        <div class="flex justify-center lg:justify-start">
+        <div class="flex items-center gap-3">
           <a 
             href="/pages/category.html" 
-            class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white text-lg font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-pink-300"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#B6349A] text-sm font-medium hover:bg-gray-50 focus:outline-none focus:ring-2"
           >
-            <span>Shop Now</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
+            <span class="font-montserrat font-semibold text-xs lg:text-sm lg:font-inter">View All</span>
+            <img src="assets/images/viewAllFleche.svg" alt="" aria-hidden="true" class="h-5 w-5 " />
           </a>
+        
         </div>
+      </div>
+
+      <nav aria-label="Filtres de catégories tendances" class="mb-6">
+        <div class="flex flex-wrap gap-2">
+          <button 
+            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full  font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+            data-category="all"
+          >
+            Fresh bakery
+          </button>
+          <button 
+            class=" font-montserrat filter-tab active px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 bg-white border border-gray-200 hover:border-[#B6349A]"
+            data-category="bakery"
+          >
+            Fresh bakery
+          </button>
+          <button 
+            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 hover:border-[#B6349A]"
+            data-category="special"
+          >
+            Fresh bakery
+          </button>
+          <button 
+            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+            data-category="organic"
+          >
+            Fresh bakery
+          </button>
+          <button 
+            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+            data-category="fresh"
+          >
+            Fresh bakery
+          </button>
+        </div>
+        
+        <div class="flex flex-wrap justify-between gap-2 mt-2">
+          <div>
+            <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery2"
+            >
+              Fresh bakery
+            </button>
+            <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery3"
+            >
+              Fresh bakery
+            </button>
+            <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery4"
+            >
+              Fresh bakery
+            </button>
+            <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery5"
+            >
+              Fresh bakery
+            </button>
+            <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery6"
+            >
+              Fresh bakery
+            </button>
+          </div>
+          <div class="flex gap-4">
+            <button 
+              id="prev-btn-trending" 
+              class="p-2 rounded-full border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2"
+              aria-label="Produit précédent"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+            
+            <button 
+              id="next-btn-trending" 
+              class="p-2 rounded-full border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2"
+              aria-label="Produit suivant"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="overflow-x-auto scrollbar-hide scroll-container" id="trending-scroll">
+        <div class="flex gap-4 pb-2">
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange fraîche"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="6"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange bio"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="7"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange premium"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="8"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange juteuse"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="9"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange sucrée"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="10"
+          ></product-card>
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange fraîche"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="6"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange bio"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="7"
+          ></product-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="order-cta" class="mt-12 lg:mt-16 container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-[#FCFCFC] rounded-3xl p-8 lg:p-12"> 
+    <div class="order-2 lg:order-1">
+      <div class="grid grid-cols-3 gap-4">
+        <product-card 
+        img-src="assets/images/orange.png" 
+        img-alt="Orange sucrée"
+        title="This is product a"
+        price-unit="$2.71/lb"
+        price="$99.99"
+        old-price="$99.99"
+        stock-left="12"
+        stock-total="12"
+        product-id="10"
+      ></product-card>
+      <product-card 
+        img-src="assets/images/orange.png" 
+        img-alt="Orange fraîche"
+        title="This is product a"
+        price-unit="$2.71/lb"
+        price="$99.99"
+        old-price="$99.99"
+        stock-left="12"
+        stock-total="12"
+        product-id="6"
+      ></product-card>
+
+      <product-card 
+        img-src="assets/images/orange.png" 
+        img-alt="Orange bio"
+        title="This is product a"
+        price-unit="$2.71/lb"
+        price="$99.99"
+        old-price="$99.99"
+        stock-left="12"
+        stock-total="12"
+        product-id="7"
+      ></product-card>
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2 text-center lg:text-left">
+      
+      <div class="inline-block mb-2">
+        <span class="inline-flex items-center gap-2  rounded-full font-inter font-semibold text-xs lg:text-sm lg:font-bold text-[#B6349A]">
+          Get 10% OFF On Your First Order
+        </span>
+      </div>
+
+      <p id="order-cta" class="font-montserrat font-semibold text-xs lg:text-3xl mb-6 ">
+        Order Now Your Grocery!
+      </p>
+      <div class="flex flex-wrap gap-2 justify-center lg:justify-start mb-8 pr-10 w-[350px]">
+        <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery7"
+            >
+              Beef
+            </button>
+        <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery8"
+            >
+              Rice
+            </button>
+        <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery9"
+            >
+              Fresh bakery
+            </button>
+        <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery10"
+            >
+              Fresh bakery
+            </button>
+        <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery11"
+            >
+              Fresh bakery
+            </button>
+        <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery12"
+            >
+              Fresh bakery
+            </button>
+        <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery13"
+            >
+              Fresh bakery
+            </button>
+        <button 
+              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              data-category="bakery15"
+            >
+              Fresh bakery
+            </button>
+
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="trending-favorites" class="mt-12 lg:mt-16 p-20 w-full bg-[#FAF8F9]">
+    <div class="container mx-auto px-6 lg:px-8 lg:py-8 bg-[#FFFFFF] rounded-[32px]">
+      
+      <div class="relative flex items-center justify-between mb-6">
+        
+        <div class="flex-1">
+          <h2 id="trending-favorites" class="font-montserrat font-bold text-2xl lg:text-3xl text-[#0D0C0D]">
+            Trending Store Favorites
+          </h2>
+        </div>
+
 
       </div>
 
+      <!-- Filter Tabs -->
+      <nav aria-label="Filtres de catégories tendances" class="mb-6">
+        <div class="flex flex-wrap gap-2">
+          <button 
+            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
+            data-category="beef"
+          >
+            Beef
+          </button>
+          <button 
+            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A]"
+            data-category="rice"
+          >
+            Rice
+          </button>
+          <button 
+            class="font-montserrat text-xs filter-tab  px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
+            data-category="fresh-bakery17"
+          >
+            Fresh bakery
+          </button>
+          <button 
+            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
+            data-category="bakery18"
+          >
+            Fresh bakery
+          </button>
+          <button 
+            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
+            data-category="bakery19"
+          >
+            Fresh bakery
+          </button>
+        </div>
+        
+        <!-- Second Row of Filters -->
+        <div class="flex flex-wrap gap-2 mt-2">
+          <button 
+            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
+            data-category="bakery20"
+          >
+            Fresh bakery
+          </button>
+          <button 
+            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
+            data-category="bakery21"
+          >
+            Fresh bakery
+          </button>
+          <button 
+            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
+            data-category="bakery22"
+          >
+            Fresh bakery
+          </button>
+          <button 
+            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
+            data-category="bakery23"
+          >
+            Fresh bakery
+          </button>
+          
+        </div>
+      </nav>
+
+      <!-- Products Carousel -->
+      <div class="overflow-x-auto scrollbar-hide scroll-container" id="trending-scroll">
+        <div class="flex gap-4 pb-2">
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange fraîche"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="6"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange bio"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="7"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange premium"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="8"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange juteuse"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="9"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange sucrée"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="10"
+          ></product-card>
+           <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange premium"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="8"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange juteuse"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="9"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange sucrée"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="10"
+          ></product-card>
+           <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange premium"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="8"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange juteuse"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="9"
+          ></product-card>
+
+          <product-card 
+            img-src="assets/images/orange.png" 
+            img-alt="Orange sucrée"
+            title="This is product a"
+            price-unit="$2.71/lb"
+            price="$99.99"
+            old-price="$99.99"
+            stock-left="12"
+            stock-total="12"
+            product-id="10"
+          ></product-card>
+        </div>
+      </div>
     </div>
-    
-  </div>
-</section>
-  </main>
+  </section>
+
+
+</main>
 
   <script src="assets/js/web-components/product-card.js" type="module"></script>
 
   <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Navigation par flèches pour Trending
-  const trendingContainer = document.getElementById('trending-scroll');
-  const prevBtnTrending = document.getElementById('prev-btn-trending');
-  const nextBtnTrending = document.getElementById('next-btn-trending');
-  
-  if (trendingContainer && prevBtnTrending && nextBtnTrending) {
-    prevBtnTrending.addEventListener('click', () => {
-      trendingContainer.scrollBy({ left: -260, behavior: 'smooth' });
-    });
-    
-    nextBtnTrending.addEventListener('click', () => {
-      trendingContainer.scrollBy({ left: 260, behavior: 'smooth' });
-    });
-  }
+    document.addEventListener('DOMContentLoaded', () => {
+      // Navigation par flèches pour Trending
+      const trendingContainer = document.getElementById('trending-scroll');
+      const prevBtnTrending = document.getElementById('prev-btn-trending');
+      const nextBtnTrending = document.getElementById('next-btn-trending');
+      
+      if (trendingContainer && prevBtnTrending && nextBtnTrending) {
+        prevBtnTrending.addEventListener('click', () => {
+          trendingContainer.scrollBy({ left: -260, behavior: 'smooth' });
+        });
+        
+        nextBtnTrending.addEventListener('click', () => {
+          trendingContainer.scrollBy({ left: 260, behavior: 'smooth' });
+        });
+      }
 
-  // Gestion des filtres (tabs)
-  const filterTabs = document.querySelectorAll('.filter-tab');
-  
-  filterTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Retirer la classe active de tous les tabs
-      filterTabs.forEach(t => {
-        t.classList.remove('active', 'border-2', 'border-pink-500');
-        t.classList.add('border', 'border-gray-200');
+      // Gestion des filtres (tabs)
+      const filterTabs = document.querySelectorAll('.filter-tab');
+      
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Retirer la classe active de tous les tabs
+          filterTabs.forEach(t => {
+            t.classList.remove('active', 'border-2', 'border-[#B6349A]');
+            t.classList.add('border', 'border-gray-200');
+          });
+          
+          // Ajouter la classe active au tab cliqué
+          tab.classList.add('active', 'border-2', 'border-[#B6349A]');
+          tab.classList.remove('border', 'border-gray-200');
+          
+          // Ici vous pouvez ajouter la logique de filtrage
+          const category = tab.getAttribute('data-category');
+          console.log('Filtre sélectionné:', category);
+          
+          // TODO: Filtrer les produits selon la catégorie
+        });
       });
-      
-      // Ajouter la classe active au tab cliqué
-      tab.classList.add('active', 'border-2', 'border-pink-500');
-      tab.classList.remove('border', 'border-gray-200');
-      
-      // Ici vous pouvez ajouter la logique de filtrage
-      const category = tab.getAttribute('data-category');
-      console.log('Filtre sélectionné:', category);
-      
-      // TODO: Filtrer les produits selon la catégorie
     });
-  });
-});
-</script>
+  </script>
 
 <script>
 // Navigation par flèches pour Best Seller

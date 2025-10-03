@@ -9,6 +9,30 @@
   <link rel="stylesheet" href="css/global.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    @keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+
+    .scroll-container {
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .scroll-container > div > * {
+      scroll-snap-align: start;
+    }
     .scrollbar-hide::-webkit-scrollbar { display: none; }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     .container {
@@ -20,106 +44,317 @@
         max-width: 1600px !important;
       }
     }
+    .custom-final-shape {
+ 
+      --r: 34px; 
+      --_m: #0000 100%, #000 calc(100% + 1px);
+
+      width: 300px;
+      aspect-ratio: 1.28;
+
+      background: #6C2358;
+      border-radius: 0 var(--r)/0 calc(2*var(--r));
+      padding-block: var(--r);
+      mask:
+      conic-gradient(#000 0 0) content-box,
+      radial-gradient(var(--r) at 0 50%, var(--_m)) 0% 50% no-repeat,
+      radial-gradient(var(--r) at 0 100%, var(--_m)) 100% 100% no-repeat;
+
+
+      mask-size: var(--r) var(--r);
+    }
   </style>
 </head>
 <body class=" text-[#0D0C0D] bg-white">
 
-  <header class="fixed top-0 w-full z-50 bg-white border-b border-[#F8F7F8]"  id="site-header">
-    <div class="container mx-auto px-6 lg:px-8 py-4 flex items-center justify-between gap-4 text-[#3E3B3F]">
+  <header class="fixed top-0 w-full z-50 bg-white border-b border-[#F8F7F8]" id="site-header">
+  <div class="container mx-auto px-4 lg:px-8">
+    
+    <!-- Mobile Header - Top Row -->
+    <div class="flex md:hidden items-center justify-between py-3">
+      <!-- Menu Hamburger -->
+      <button 
+        type="button" 
+        id="mobile-menu-button"
+        class="p-2 -ml-2 focus:outline-none focus:ring-2 focus:ring-[#B6349A] rounded-lg"
+        aria-label="Menu"
+        aria-expanded="false"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Location Dropdown (Mobile) -->
+      <button 
+        type="button"
+        class="flex items-center gap-1.5 px-2 py-1.5 rounded-full hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#B6349A]"
+      >
+        <img src="assets/images/location.svg" alt="" class="h-5 w-5" />
+        <span class="font-montserrat font-semibold text-base text-[#B6349A]">10115 New York</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="text-[#B6349A]">
+          <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Cart Button (Mobile) -->
+      <a 
+        href="/pages/cart.html" 
+        class="relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#B6349A] hover:bg-[#8f2a6e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#B6349A]" 
+        aria-label="Voir le panier (14 articles)"
+      >
+        <img src="assets/images/cart.svg" alt="" aria-hidden="true" class="h-5 w-5 brightness-0 invert" />
+        <span class="absolute -top-1 -right-1 inline-flex items-center justify-center h-5 w-5 text-xs font-inter font-bold rounded-full bg-white text-[#B6349A] border-2 border-[#B6349A]">
+          14
+        </span>
+      </a>
+    </div>
+
+    <!-- Mobile Search Bar - Second Row -->
+    <div class="md:hidden pb-3">
+      <div class="relative">
+        <input 
+          type="search"
+          placeholder="Search by product name" 
+          class="font-montserrat placeholder-gray-400 font-normal w-full pl-4 pr-12 py-3.5 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#B6349A] focus:border-transparent text-base" 
+        />
+        <button 
+          type="submit" 
+          class="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-pink-50 hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-[#B6349A]" 
+          aria-label="Rechercher"
+        >
+          <img src="assets/images/search.svg" alt="" class="h-5 w-5" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Desktop Header -->
+    <div class="hidden md:flex items-center justify-between gap-4 text-[#3E3B3F] py-4">
       <div class="flex items-center gap-5">
-        <img src="assets/images/logo.svg" alt="EasyMart" class="hidden md:block w-[134px] h-[32px]" />
+        <img src="assets/images/logo.svg" alt="EasyMart" class="w-[134px] h-[32px]" />
         <div class="lg:flex items-center gap-2 text-sm text-neutral-500">
           <img src="assets/images/location.svg" alt="location" class="h-5 w-5" />
-          <span class="font-montserrat font-medium text-[#3E3B3F] ">10115 New York</span>
+          <span class="font-montserrat font-medium text-[#3E3B3F]">10115 New York</span>
         </div>
       </div>
 
-      <div class="hidden md:block relative w-[458px]">
-          <button  type="button" class="absolute bg-pink-100 left-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full focus:outline-none" aria-hidden="true">
-            <img src="assets/images/search.svg" alt="location" class="h-4 w-4" />
-          </button>
-          <input 
-            placeholder="Search by" 
-            class="font-montserrat placeholder-[#3E3B3F] font-normal w-full px-11 py-3 rounded-[32px] border border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-300 text-sm" 
-          />
+      <div class="relative w-[458px]">
+        <button type="button" class="absolute bg-pink-100 left-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full focus:outline-none" aria-hidden="true">
+          <img src="assets/images/search.svg" alt="location" class="h-4 w-4" />
+        </button>
+        <input 
+          type="search"
+          placeholder="Search by" 
+          class="font-montserrat placeholder-[#3E3B3F] font-normal w-full px-11 py-3 rounded-[32px] border border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[#B6349A] text-sm" 
+        />
       </div>
 
       <div class="flex items-center gap-4">
-        <a href="/pages/cart.html" class="relative inline-flex items-center gap-1 px-3 py-2 rounded-full bg-[#FEF5FD] hover:bg-gray-50 focus:outline-none focus:ring-2" aria-label="Voir le panier">
+        <a href="/pages/cart.html" class="relative inline-flex items-center gap-1 px-3 py-2 rounded-full bg-[#FEF5FD] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#B6349A]" aria-label="Voir le panier">
           <div class="relative flex items-center bg-white rounded-full p-1">
             <img src="assets/images/cart.svg" alt="cart" aria-hidden="true" class="h-4 w-4" />
             <span class="inline-flex items-center justify-center h-4 w-4 text-xs font-inter font-bold rounded-full text-[#B6349A]">
               14
             </span>
           </div>
-
-          
-          <span class="font-inter font-medium hidden lg:inline text-sm ">Cart</span>
-          
+          <span class="font-inter font-medium hidden lg:inline text-sm">Cart</span>
         </a>
 
-        <a href="/pages/login.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#B6349A] text-sm  font-medium focus:outline-none focus:ring-2" aria-label="Se connecter">
-          <img src="assets/images/login.svg" alt="" aria-hidden="true" class="h-4 w-4 " />
+        <a href="/pages/login.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#B6349A] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#B6349A]" aria-label="Se connecter">
+          <img src="assets/images/login.svg" alt="" aria-hidden="true" class="h-4 w-4" />
           <span>Login</span>
         </a>
       </div>
     </div>
-  </header>
 
-  <main class="pt-24"> 
-    <section aria-labelledby="home-hero" class="container mx-auto pl-6 pr-17 lg:pl-8 lg:pr-12">
-      <div class="mb-3 lg:mb-4">
-        <div class="overflow-x-auto scrollbar-hide scroll-container rounded-2xl">
-          <div class="flex gap-3 lg:gap-4 pb-2 ">
-            <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="570" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="600" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="550" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="500" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="400" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="47" md-height="60"></hero-card>
-          </div>
-        </div>
-      </div>
-      
-      <div>
-        <div class="overflow-x-auto scrollbar-hide scroll-container rounded-b-2xl">
-          <div class="flex gap-3 lg:gap-4 pb-2">
-            <hero-card src="assets/images/image-vide.png" alt="Produit promo" width="450" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Collection secondaire" width="690" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Nouveautés" width="600" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Nouveautés" width="300" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="500" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="400" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="47" md-height="60"></hero-card>
-            <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" height="47" md-height="60"></hero-card>
-          </div>
-        </div>
-      </div>
-    </section>
+  </div>
 
-    <section aria-labelledby="cats" class="mt-8">
+  <!-- Mobile Menu Overlay (Hidden by default) -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 top-[60px] bg-white z-40 overflow-y-auto">
+    <nav class="container mx-auto px-4 py-6">
+      <!-- Search Bar Mobile -->
+      <div class="mb-6 relative">
+        <button type="button" class="absolute bg-pink-100 left-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full focus:outline-none" aria-hidden="true">
+          <img src="assets/images/search.svg" alt="" class="h-4 w-4" />
+        </button>
+        <input 
+          placeholder="Search by" 
+          class="font-montserrat placeholder-[#3E3B3F] font-normal w-full px-11 py-3 rounded-[32px] border border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[#B6349A] text-sm" 
+        />
+      </div>
+
+      <!-- Login Button -->
+      <a href="/pages/login.html" class="flex items-center justify-center gap-2 w-full px-4 py-3 mb-6 rounded-full border border-[#B6349A] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#B6349A]">
+        <img src="assets/images/login.svg" alt="" aria-hidden="true" class="h-4 w-4" />
+        <span>Login</span>
+      </a>
+
+      <!-- Menu Items -->
+      <ul class="space-y-1">
+        <li>
+          <a href="#" class="block px-4 py-3 rounded-lg text-base font-montserrat font-medium text-[#3E3B3F] hover:bg-gray-50">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block px-4 py-3 rounded-lg text-base font-montserrat font-medium text-[#3E3B3F] hover:bg-gray-50">
+            Shop
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block px-4 py-3 rounded-lg text-base font-montserrat font-medium text-[#3E3B3F] hover:bg-gray-50">
+            About Us
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block px-4 py-3 rounded-lg text-base font-montserrat font-medium text-[#3E3B3F] hover:bg-gray-50">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <main class="pt-24 mt-14 lg:mt-0"> 
+    <section aria-labelledby="home-hero" class="container mx-auto px-4 lg:pl-8 lg:pr-12 mt-4 lg:mt-6">
+  
+  <!-- Une seule ligne sur mobile, deux lignes sur desktop -->
+  <div class="lg:mb-3">
+    <div class="overflow-x-auto scrollbar-hide scroll-container rounded-2xl lg:rounded-2xl">
+      <div class="flex gap-3 lg:gap-4 pb-2">
+        <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="570" mobile-width="280"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="600" mobile-width="320"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="550" mobile-width="260"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" mobile-width="200"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="500" mobile-width="240"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="400" mobile-width="220"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" mobile-width="200"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300" mobile-width="200"></hero-card>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Deuxième ligne visible uniquement sur desktop -->
+  <div class="hidden lg:block">
+    <div class="overflow-x-auto scrollbar-hide scroll-container rounded-b-2xl">
+      <div class="flex gap-3 lg:gap-4 pb-2">
+        <hero-card src="assets/images/image-vide.png" alt="Produit promo" width="450"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Collection secondaire" width="690"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Nouveautés" width="600"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Nouveautés" width="300"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Collection principale EasyMart" width="500"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Sélection rapide" width="400"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300"></hero-card>
+        <hero-card src="assets/images/image-vide.png" alt="Offres rapides" width="300"></hero-card>
+      </div>
+    </div>
+  </div>
+
+  <div id="pagination-dots" class="flex lg:hidden justify-center gap-2 mt-3 mb-2">
+  
+  </div>
+
+</section>
+   <section aria-labelledby="cats" class="mt-8 lg:hidden ">
       <div class="container mx-auto px-6 lg:px-8">
 
-        <nav aria-label="Liste des catégories" class="overflow-x-auto scrollbar-hide py-4">
-          <ul class="flex items-center gap-3 whitespace-nowrap">
+        <nav aria-label="Liste des catégories">
+          <ul class="grid grid-cols-5 gap-2">
             <nav-item-category href="#" img-src="assets/images/bread.svg" img-alt="Bread" label="Bread"></nav-item-category>
             <nav-item-category href="#" img-src="assets/images/cheese.svg" img-alt="Cheese" label="Cheese"></nav-item-category>
-            <nav-item-category href="#" img-src="assets/images/alcohol.svg" img-alt="alcohol" label="alcohol"></nav-item-category>
-            <nav-item-category href="#" img-src="assets/images/cake.svg" img-alt="cake" label="cake"></nav-item-category>
-            <nav-item-category href="#" img-src="assets/images/candy.svg" img-alt="candy" label="candy"></nav-item-category>
-            <nav-item-category href="#" img-src="assets/images/fruits.svg"  img-alt="fruits" label="fruits"></nav-item-category>
-            <nav-item-category href="#" img-src="assets/images/snacks.svg"  img-alt="snacks" label="snacks"></nav-item-category>
-            <nav-item-category href="#" img-src="assets/images/vegetables.svg"  img-alt="vegetables" label="vegetables"></nav-item-category>
-            <nav-item-category href="#" img-src="assets/images/watermelon.svg"  img-alt="watermelon" label="watermelon"></nav-item-category>
-            <nav-item-category href="#" img-src="assets/images/yogurt.svg"  img-alt="yogurt" label="yogurt"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/alcohol.svg" img-alt="Alcohol" label="Alcohol"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/yogurt.svg" img-alt="Yogurt" label="Yogurt"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/fruits.svg" img-alt="Fruits" label="Fruits"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/cheese.svg" img-alt="Cheese" label="Cheese"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/alcohol.svg" img-alt="Alcohol" label="Alcohol"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/watermelon.svg" img-alt="Water" label="Water"></nav-item-category>
+            <nav-item-category href="#" img-src="assets/images/watermelon.svg" img-alt="Water" label="Water"></nav-item-category>
+            <button 
+              id="openCategoriesModal"
+              class="w-full flex flex-col items-center gap-2 py-3"
+              aria-label="Voir toutes les catégories"
+            >
+              <div class="w-8 h-8 rounded-full bg-white  flex items-center justify-center shadow-sm">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <circle cx="5" cy="12" r="1.5" fill="currentColor"/>
+                  <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                  <circle cx="19" cy="12" r="1.5" fill="currentColor"/>
+                </svg>
+              </div>
+              <span class="font-montserrat font-medium text-sm text-[#0D0C0D]">View all</span>
+            </button>
+          
           </ul>
         </nav>
+
       </div>
     </section>
 
+
+<div 
+  id="categoriesModal" 
+  class="fixed inset-0 z-50 hidden bg-black/50 lg:hidden flex items-end"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true"
+>
+  <!-- Modal Container -->
+  <div class=" bg-white rounded-t-3xl w-full  max-h-[80vh] overflow-hidden animate-slide-up">
+    
+    <!-- Modal Header -->
+    <div class=" top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+      <h2 id="modal-title" class="font-montserrat font-bold text-xl text-[#0D0C0D]">
+        Categories
+      </h2>
+      <button 
+        id="closeCategoriesModal"
+        class="p-2 rounded-full hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-pink-400"
+        aria-label="Fermer le modal"
+      >
+        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="px-6 py-6 overflow-y-auto max-h-[calc(80vh-80px)]">
+      <ul class="grid grid-cols-5 gap-4">
+        <li>
+          <nav-item-category href="#" img-src="assets/images/fruits.svg" img-alt="Fruits" label="Fruits"></nav-item-category>
+        </li>
+        <li>
+          <nav-item-category href="#" img-src="assets/images/alcohol.svg" img-alt="Alcohol" label="Alcohol"></nav-item-category>
+        </li>
+        <li>
+          <nav-item-category href="#" img-src="assets/images/alcohol.svg" img-alt="Alcohol" label="Alcohol"></nav-item-category>
+        </li>
+        <li>
+          <nav-item-category href="#" img-src="assets/images/alcohol.svg" img-alt="Alcohol" label="Alcohol"></nav-item-category>
+        </li>
+        <li>
+          <nav-item-category href="#" img-src="assets/images/alcohol.svg" img-alt="Alcohol" label="Alcohol"></nav-item-category>
+        </li>
+        <li>
+          <nav-item-category href="#" img-src="assets/images/alcohol.svg" img-alt="Alcohol" label="Alcohol"></nav-item-category>
+        </li>
+        <li>
+          <nav-item-category href="#" img-src="assets/images/alcohol.svg" img-alt="Alcohol" label="Alcohol"></nav-item-category>
+        </li>
+
+
+      </ul>
+    </div>
+
+    <div class="sticky bottom-0 bg-white py-3 flex justify-center border-t border-gray-200">
+      <div class="w-12 h-1 bg-gray-300 rounded-full"></div>
+    </div>
+
+  </div>
+</div>
 
     <section aria-labelledby="best-seller" class="mt-12 lg:mt-16">
       <div class="container mx-auto px-6 lg:px-8">
@@ -135,7 +370,8 @@
               class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#B6349A] text-sm font-medium hover:bg-gray-50 focus:outline-none focus:ring-2"
             >
               <span class="font-montserrat font-semibold text-xs lg:text-sm lg:font-inter">View All (+40)</span>
-              <img src="assets/images/viewAllFleche.svg" alt="" aria-hidden="true" class="h-5 w-5 " />
+              <img src="assets/images/viewAllFleche.svg" alt="" aria-hidden="true" class="h-5 w-5 hidden lg:block " />
+               <img src="assets/images/fleche2.svg" alt="" aria-hidden="true" class="h-5 w-5  lg:hidden " />
             </a>
             
             <button 
@@ -143,9 +379,7 @@
               class="hidden lg:inline-flex p-2 rounded-full border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2"
               aria-label="Produit précédent"
             >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-              </svg>
+              <img src="assets/images/fleche22.svg" alt="" aria-hidden="true" class="h-5 w-5 hidden lg:block " />
             </button>
             
             <button 
@@ -153,9 +387,7 @@
               class="hidden lg:inline-flex p-2 rounded-full border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2"
               aria-label="Produit suivant"
             >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
+               <img src="assets/images/fleche2.svg" alt="" aria-hidden="true" class="h-5 w-5 hidden lg:block " />
             </button>
           </div>
 
@@ -265,9 +497,9 @@
             class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#B6349A] text-sm font-medium hover:bg-gray-50 focus:outline-none focus:ring-2"
           >
             <span class="font-montserrat font-semibold text-xs lg:text-sm lg:font-inter">View All</span>
-            <img src="assets/images/viewAllFleche.svg" alt="" aria-hidden="true" class="h-5 w-5 " />
+            <img src="assets/images/viewAllFleche.svg" alt="" aria-hidden="true" class="h-5 w-5 hidden lg:block " />
+            <img src="assets/images/fleche2.svg" alt="" aria-hidden="true" class="h-5 w-5  lg:hidden " />
           </a>
-        
         </div>
       </div>
 
@@ -338,7 +570,7 @@
               Fresh bakery
             </button>
           </div>
-          <div class="flex gap-4">
+          <div class="flex gap-4 hidden lg:block">
             <button 
               id="prev-btn-trending" 
               class="p-2 rounded-full border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2"
@@ -504,49 +736,49 @@
       </p>
       <div class="flex flex-wrap gap-2 justify-center lg:justify-start mb-8 pr-10 w-[350px]">
         <button 
-              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              class="font-montserrat text-xs lg:text-sm filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
               data-category="bakery7"
             >
               Beef
             </button>
         <button 
-              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              class="font-montserrat text-xs lg:text-sm filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
               data-category="bakery8"
             >
               Rice
             </button>
         <button 
-              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              class="font-montserrat text-xs lg:text-sm filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
               data-category="bakery9"
             >
               Fresh bakery
             </button>
         <button 
-              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              class="font-montserrat text-xs lg:text-sm filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
               data-category="bakery10"
             >
               Fresh bakery
             </button>
         <button 
-              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              class="font-montserrat text-xs lg:text-sm filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
               data-category="bakery11"
             >
               Fresh bakery
             </button>
         <button 
-              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              class="font-montserrat text-xs lg:text-sm filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
               data-category="bakery12"
             >
               Fresh bakery
             </button>
         <button 
-              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              class="font-montserrat text-xs lg:text-sm filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
               data-category="bakery13"
             >
               Fresh bakery
             </button>
         <button 
-              class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
+              class="font-montserrat text-xs lg:text-sm filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200  hover:border-[#B6349A]"
               data-category="bakery15"
             >
               Fresh bakery
@@ -557,226 +789,466 @@
   </section>
 
   <section aria-labelledby="trending-favorites" class="mt-12 lg:mt-16 p-20 w-full bg-[#FAF8F9]">
-    <div class="container mx-auto px-6 lg:px-8 lg:py-8 bg-[#FFFFFF] rounded-[32px]">
+  <div class="container mx-auto px-6 lg:px-8 lg:py-8 bg-[#FFFFFF] rounded-[32px]">
+    
+    <div class="relative flex items-start justify-between mb-6">
       
-      <div class="relative flex items-center justify-between mb-6">
-        
-        <div class="flex-1">
-          <h2 id="trending-favorites" class="font-montserrat font-bold text-2xl lg:text-3xl text-[#0D0C0D]">
-            Trending Store Favorites
-          </h2>
-        </div>
-
-
+      <div class="flex-1">
+        <p id="trending-favorites" class="font-montserrat font-semibold text-xl lg:text-2xl">
+          Trending Store Favorites
+        </p>
       </div>
 
-      <!-- Filter Tabs -->
-      <nav aria-label="Filtres de catégories tendances" class="mb-6">
-        <div class="flex flex-wrap gap-2">
-          <button 
-            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
-            data-category="beef"
+      <div class="custom-final-shape absolute -top-8 -right-8 w-[280px] text-white shadow-lg mt-[-34px]">
+
+          <div class="flex items-center gap-2 ml-3 mt-4">
+            <img src="assets/images/freshnessGuarantee.svg" alt="" aria-hidden="true" class="h-5 w-5 " />
+            <p class="font-inter font-medium text-sm text-[#EEF5EE]">
+              Freshness Guarantee
+            </p>
+          </div>
+
+          <p class="font-inter text-2xl font-medium ml-4 mt-1 ">
+            Weekly sold 1k+
+          </p>
+
+          <a 
+            href="#" 
+            class="inline-flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full text-xs font-medium font-inter transition-transform hover:scale-105 ml-3 mt-4 "
           >
-            Beef
-          </button>
-          <button 
-            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A]"
-            data-category="rice"
-          >
-            Rice
-          </button>
-          <button 
-            class="font-montserrat text-xs filter-tab  px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
-            data-category="fresh-bakery17"
-          >
-            Fresh bakery
-          </button>
-          <button 
-            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
-            data-category="bakery18"
-          >
-            Fresh bakery
-          </button>
-          <button 
-            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
-            data-category="bakery19"
-          >
-            Fresh bakery
-          </button>
+            <span>View More</span>
+            <img src="assets/images/viewAllFleche.svg" alt="" class="h-4 w-4 " />
+
+          </a>
         </div>
+
+    </div>
+
+    <nav aria-label="Filtres de catégories tendances" class="mb-6">
+       <div class="flex flex-wrap gap-2">
+        <button 
+          class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 hover:border-[#B6349A] "
+          data-category="beef"
+        >
+          Beef
+        </button>
+        <button 
+          class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 hover:border-[#B6349A]"
+          data-category="rice"
+        >
+          Rice
+        </button>
+        <button 
+          class="font-montserrat text-xs filter-tab  px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 hover:border-[#B6349A] "
+          data-category="fresh-bakery17"
+        >
+          Fresh bakery
+        </button>
+        <button 
+          class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 hover:border-[#B6349A] "
+          data-category="bakery18"
+        >
+          Fresh bakery
+        </button>
+        <button 
+          class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 hover:border-[#B6349A] "
+          data-category="bakery19"
+        >
+          Fresh bakery
+        </button>
+      </div>
+      
+      <div class="flex flex-wrap gap-2 mt-2">
+        <button 
+          class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 hover:border-[#B6349A] "
+          data-category="bakery20"
+        >
+          Fresh bakery
+        </button>
+        <button 
+          class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 hover:border-[#B6349A] "
+          data-category="bakery21"
+        >
+          Fresh bakery
+        </button>
+        <button 
+          class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 hover:border-[#B6349A] "
+          data-category="bakery22"
+        >
+          Fresh bakery
+        </button>
+        <button 
+          class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 hover:border-[#B6349A] "
+          data-category="bakery23"
+        >
+          Fresh bakery
+        </button>
         
-        <!-- Second Row of Filters -->
-        <div class="flex flex-wrap gap-2 mt-2">
-          <button 
-            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
-            data-category="bakery20"
-          >
-            Fresh bakery
-          </button>
-          <button 
-            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
-            data-category="bakery21"
-          >
-            Fresh bakery
-          </button>
-          <button 
-            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
-            data-category="bakery22"
-          >
-            Fresh bakery
-          </button>
-          <button 
-            class="font-montserrat text-xs filter-tab px-4 py-2 rounded-full font-medium transition-all duration-200 bg-white border border-gray-200 text-[#0D0C0D] hover:border-[#B6349A] "
-            data-category="bakery23"
-          >
-            Fresh bakery
-          </button>
-          
-        </div>
-      </nav>
+      </div>
+    </nav>
 
-      <!-- Products Carousel -->
-      <div class="overflow-x-auto scrollbar-hide scroll-container" id="trending-scroll">
-        <div class="flex gap-4 pb-2">
-          <product-card 
-            img-src="assets/images/orange.png" 
-            img-alt="Orange fraîche"
-            title="This is product a"
-            price-unit="$2.71/lb"
-            price="$99.99"
-            old-price="$99.99"
-            stock-left="12"
-            stock-total="12"
-            product-id="6"
-          ></product-card>
+    <div class="overflow-x-auto scrollbar-hide scroll-container" id="trending-scroll">
+      <div class="flex gap-4 pb-2">
+        
+        <product-card 
+          img-src="assets/images/orange.png" 
+          img-alt="Orange juteuse"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="9"
+        ></product-card>
 
+        <product-card 
+          img-src="assets/images/orange.png" 
+          img-alt="Orange sucrée"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="10"
+        ></product-card>
           <product-card 
-            img-src="assets/images/orange.png" 
-            img-alt="Orange bio"
-            title="This is product a"
-            price-unit="$2.71/lb"
-            price="$99.99"
-            old-price="$99.99"
-            stock-left="12"
-            stock-total="12"
-            product-id="7"
-          ></product-card>
+          img-src="assets/images/orange.png" 
+          img-alt="Orange premium"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="8"
+        ></product-card>
 
-          <product-card 
-            img-src="assets/images/orange.png" 
-            img-alt="Orange premium"
-            title="This is product a"
-            price-unit="$2.71/lb"
-            price="$99.99"
-            old-price="$99.99"
-            stock-left="12"
-            stock-total="12"
-            product-id="8"
-          ></product-card>
+        <product-card 
+          img-src="assets/images/orange.png" 
+          img-alt="Orange juteuse"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="9"
+        ></product-card>
+        <product-card 
+          img-src="assets/images/orange.png" 
+          img-alt="Orange juteuse"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="9"
+        ></product-card>
 
+        <product-card 
+          img-src="assets/images/orange.png" 
+          img-alt="Orange sucrée"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="10"
+        ></product-card>
           <product-card 
-            img-src="assets/images/orange.png" 
-            img-alt="Orange juteuse"
-            title="This is product a"
-            price-unit="$2.71/lb"
-            price="$99.99"
-            old-price="$99.99"
-            stock-left="12"
-            stock-total="12"
-            product-id="9"
-          ></product-card>
+          img-src="assets/images/orange.png" 
+          img-alt="Orange premium"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="8"
+        ></product-card>
 
-          <product-card 
-            img-src="assets/images/orange.png" 
-            img-alt="Orange sucrée"
-            title="This is product a"
-            price-unit="$2.71/lb"
-            price="$99.99"
-            old-price="$99.99"
-            stock-left="12"
-            stock-total="12"
-            product-id="10"
-          ></product-card>
-           <product-card 
-            img-src="assets/images/orange.png" 
-            img-alt="Orange premium"
-            title="This is product a"
-            price-unit="$2.71/lb"
-            price="$99.99"
-            old-price="$99.99"
-            stock-left="12"
-            stock-total="12"
-            product-id="8"
-          ></product-card>
+        <product-card 
+          img-src="assets/images/orange.png" 
+          img-alt="Orange juteuse"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="9"
+        ></product-card>
+        <product-card 
+          img-src="assets/images/orange.png" 
+          img-alt="Orange juteuse"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="9"
+        ></product-card>
 
+        <product-card 
+          img-src="assets/images/orange.png" 
+          img-alt="Orange sucrée"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="10"
+        ></product-card>
           <product-card 
-            img-src="assets/images/orange.png" 
-            img-alt="Orange juteuse"
-            title="This is product a"
-            price-unit="$2.71/lb"
-            price="$99.99"
-            old-price="$99.99"
-            stock-left="12"
-            stock-total="12"
-            product-id="9"
-          ></product-card>
+          img-src="assets/images/orange.png" 
+          img-alt="Orange premium"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="8"
+        ></product-card>
 
-          <product-card 
-            img-src="assets/images/orange.png" 
-            img-alt="Orange sucrée"
-            title="This is product a"
-            price-unit="$2.71/lb"
-            price="$99.99"
-            old-price="$99.99"
-            stock-left="12"
-            stock-total="12"
-            product-id="10"
-          ></product-card>
-           <product-card 
-            img-src="assets/images/orange.png" 
-            img-alt="Orange premium"
-            title="This is product a"
-            price-unit="$2.71/lb"
-            price="$99.99"
-            old-price="$99.99"
-            stock-left="12"
-            stock-total="12"
-            product-id="8"
-          ></product-card>
-
-          <product-card 
-            img-src="assets/images/orange.png" 
-            img-alt="Orange juteuse"
-            title="This is product a"
-            price-unit="$2.71/lb"
-            price="$99.99"
-            old-price="$99.99"
-            stock-left="12"
-            stock-total="12"
-            product-id="9"
-          ></product-card>
-
-          <product-card 
-            img-src="assets/images/orange.png" 
-            img-alt="Orange sucrée"
-            title="This is product a"
-            price-unit="$2.71/lb"
-            price="$99.99"
-            old-price="$99.99"
-            stock-left="12"
-            stock-total="12"
-            product-id="10"
-          ></product-card>
-        </div>
+        <product-card 
+          img-src="assets/images/orange.png" 
+          img-alt="Orange juteuse"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="9"
+        ></product-card>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<section aria-labelledby="grocery-cta" class="mb-12 mt-16">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center bg-[#F5FBF5] rounded-3xl p-6">
+      <div class="grid grid-cols-3 gap-4">
+        <product-card 
+          img-src="assets/images/orange.png" 
+          img-alt="Orange sucrée"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="10"
+        ></product-card>
+          <product-card 
+          img-src="assets/images/orange.png" 
+          img-alt="Orange premium"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="8"
+        ></product-card>
+        <product-card 
+          img-src="assets/images/orange.png" 
+          img-alt="Orange juteuse"
+          title="This is product a"
+          price-unit="$2.71/lb"
+          price="$99.99"
+          old-price="$99.99"
+          stock-left="12"
+          stock-total="12"
+          product-id="9"
+        ></product-card>
+      </div>
 
+      <div class="order-1 lg:order-2 text-center lg:text-left">
+        
+        <div class="inline-block ">
+          <span class="inline-flex items-center gap-2 py-2 ml-0.5 text-xs lg:text-sm font-inter font-bold text-[#B6349A]">
+            Get 10% OFF On Your First Order
+          </span>
+        </div>
+
+        <p id="grocery-cta" class="font-montserrat font-semibold text-2xl lg:text-3xl text-[#0D0C0D] mb-5 ">
+          Order Now Your Grocery!
+        </p>
+
+        <div class="flex mb-8 gap-5">
+          <div class="text-center lg:text-left">
+            <div class="font-montserrat font-semibold ml-0.5 text-xl lg:text-3xl text-[#0D0C0D] mb-1">
+              1k+
+            </div>
+            <div class="font-montserrat font-medium text-xs lg:text-sm text-gray-600">
+              Items
+            </div>
+          </div>
+          <div class="text-center lg:text-left">
+            <div class="font-montserrat font-semibold text-xl lg:text-3xl text-[#0D0C0D] mb-1">
+              20
+            </div>
+            <div class="font-montserrat font-medium text-xs lg:text-sm text-gray-600">
+              Minutes
+            </div>
+          </div>
+          <div class="text-center lg:text-left">
+            <div class="font-montserrat font-semibold text-xl lg:text-3xl text-[#0D0C0D] mb-1">
+              30%
+            </div>
+            <div class="font-montserrat font-medium text-xs lg:text-sm text-gray-600">
+              Up to offers
+            </div>
+          </div>
+
+        </div>
+        <div class="flex justify-center lg:justify-start">
+          <a 
+            href="#" 
+            class="inline-flex items-center gap-2 px-6 lg:px-8 py-3 lg:py-4 rounded-full bg-[#A02B84] text-white text-sm font-semibold font-montserrat"
+          >
+            <span>Order Now</span>
+            <img src="assets/images/orderNowFleche.svg" alt="" aria-hidden="true" class="h-4 w-4 " />
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+    
+  </div>
+</section>
 </main>
+<footer class="bg-white py-12 mt-16 container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-8">
+      <img src="assets/images/logo2.svg" alt="" aria-hidden="true" class="h-12 w-12 " />
 
+      <div class="lg:col-span-1">
+        <p class="font-montserrat font-semibold text-sm text-[#0D0C0D] mb-4">
+          About
+        </p>
+        <ul class="space-y-3">
+          <li>
+            <a href="#" class=" font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+              About Us
+            </a>
+          </li>
+          <li>
+            <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+              Our Branches
+            </a>
+          </li>
+          <li>
+            <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+              Changelog
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-1">
+        <p class="font-montserrat font-semibold text-sm text-[#0D0C0D] mb-4">
+          Quick Links
+        </p>
+        <ul class="space-y-3">
+          <li>
+            <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+              FAQs
+            </a>
+          </li>
+          <li>
+            <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+              Recipes
+            </a>
+          </li>
+          <li>
+            <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+              Contact Us
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-1">
+        <p class="font-montserrat font-semibold text-sm text-[#0D0C0D] mb-4">
+          Help & Support
+        </p>
+        <ul class="space-y-3">
+          <li>
+            <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+              Terms of Privacy
+            </a>
+          </li>
+          <li>
+            <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+              Privacy Policy
+            </a>
+          </li>
+          <li>
+            <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+              Security
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-1">
+        <p class="font-montserrat font-semibold text-sm text-[#0D0C0D] mb-4">
+          Company
+        </p>
+        <ul class="space-y-3 mb-6">
+          <li>
+            <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+              Contact
+            </a>
+          </li>
+        </ul>
+        
+        
+      </div>
+      <div>
+          <p class="font-montserrat font-semibold text-sm text-[#0D0C0D] mb-4">
+            Social
+          </p>
+          <ul class="space-y-3">
+            <li>
+              <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a href="#" class="font-normal text-sm text-[#5F6980] hover:text-[#A02B84] transition-colors">
+                Twitter
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+    <p class="text-center font-normal text-sm text-gray-500 pt-8">
+      All rights reserved © 2024 EmatStudio
+    </p>
+  
+</footer>
   <script src="assets/js/web-components/product-card.js" type="module"></script>
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Navigation par flèches pour Trending
@@ -874,6 +1346,71 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('categoriesModal');
+  const openBtn = document.getElementById('openCategoriesModal');
+  const closeBtn = document.getElementById('closeCategoriesModal');
+
+  // Ouvrir le modal
+  openBtn.addEventListener('click', () => {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden'; // Désactiver le scroll du body
+  });
+
+  // Fermer le modal avec le bouton X
+  closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = ''; // Réactiver le scroll
+  });
+
+  // Fermer le modal en cliquant sur le backdrop
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Fermer le modal avec la touche Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+  });
+});
+</script>
+
+<script>
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener('click', function() {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+      
+      if (isExpanded) {
+        mobileMenu.classList.add('hidden');
+        menuButton.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      } else {
+        mobileMenu.classList.remove('hidden');
+        menuButton.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  }
+});
+</script>
+
   <script src="assets/js/web-components/hero-card.js" type="module"></script>
   <script src="assets/js/web-components/nav_item-category.js" type="module"></script>
   <script>

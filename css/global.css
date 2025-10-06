@@ -1,28 +1,56 @@
+:root {
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-degular: "Degular Demo", sans-serif;
+  --scroll-behavior: smooth;
+  
+  --color-black-50: rgba(248, 247, 248, 1);
+  --color-black-400: rgba(156, 147, 157, 1);
+  --color-black-500: rgba(95, 105, 128, 1);
+  --color-black-700: rgba(40, 40, 40, 1);
+  --color-black-800: rgba(62, 59, 63, 1);
+  --color-black-900: rgba(13, 12, 13, 1);
+
+  --color-primary-25: rgba(250, 248, 249, 1);
+  --color-primary-50: rgba(254, 245, 253, 1);
+  --color-primary-600: rgba(182, 52, 154, 1);
+  --color-primary-700: rgba(160, 43, 132, 1);
+  --color-primary-900: rgba(108, 35, 88, 1);
+
+  --color-grey-light: rgba(156, 147, 157, 1);
+  --color-yellow-600: rgba(167, 170, 32, 1);
+
+  --color-green-25: rgba(245, 251, 245, 1);
+  --color-green-500: rgba(17, 126, 17, 1);
+
+}
+
 .font-montserrat {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat);
+}
+.font-degular {
+  font-family: var(--font-degular);
 }
 
 .font-inter {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter);
 }
-/* Cacher la scrollbar */
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  scroll-behavior: smooth;
+  scroll-behavior: var(--scroll-behavior);
 }
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
-/* Style pour le conteneur parent */
 .scroll-container {
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-/* Assurer que le wrapper est positionné */
 .scroll-container:parent {
   position: relative;
 }

@@ -1772,7 +1772,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const cartModal = document.getElementById('cartModal');
   const closeCartModal = document.getElementById('closeCartModal');
-  const cartBackdrop = document.getElementById('cartBackdrop');
   const emptyCartState = document.getElementById('emptyCartState');
   const cartItemsList = document.getElementById('cartItemsList');
   const cartFooter = document.getElementById('cartFooter');
@@ -1790,7 +1789,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Fermer le modal
   closeCartModal.addEventListener('click', closeModal);
-  cartBackdrop.addEventListener('click', closeModal);
   
   // Fermer avec Escape
   document.addEventListener('keydown', (e) => {
@@ -1842,13 +1840,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     cartModal.classList.remove('hidden');
-    cartBackdrop.classList.remove('hidden');
     renderCartContent();
   }
 
   function closeModal() {
     cartModal.classList.add('hidden');
-    cartBackdrop.classList.add('hidden');
   }
 
   function renderCartContent() {
@@ -2021,7 +2017,6 @@ function removeFromCart(productId) {
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const profileDropdown = document.getElementById('profileDropdown');
-  const profileBackdrop = document.getElementById('profileBackdrop');
 
   // Sélectionner le bouton Login dans le header
   const loginButton = document.querySelector('a[href*="login"]');
@@ -2033,8 +2028,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Fermer si on clique sur le backdrop
-  profileBackdrop.addEventListener('click', closeDropdown);
   
   // Fermer avec Escape
   document.addEventListener('keydown', (e) => {
@@ -2085,12 +2078,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     profileDropdown.classList.remove('hidden');
-    profileBackdrop.classList.remove('hidden');
   }
 
   function closeDropdown() {
     profileDropdown.classList.add('hidden');
-    profileBackdrop.classList.add('hidden');
   }
 
   // Fermer au scroll
@@ -2230,14 +2221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = ''; // Réactiver le scroll
   });
 
-  // Fermer le modal en cliquant sur le backdrop
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = '';
-    }
-  });
+ 
 
   // Fermer le modal avec la touche Escape
   document.addEventListener('keydown', (e) => {

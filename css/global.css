@@ -16,14 +16,19 @@
   --color-primary-600: rgba(182, 52, 154, 1);
   --color-primary-700: rgba(160, 43, 132, 1);
   --color-primary-900: rgba(108, 35, 88, 1);
-
+  --color-primary-hover: rgba(143, 42, 110, 1);
+  
+  --color-grey-dark: rgba(104, 96, 105, 1);
   --color-grey-light: rgba(156, 147, 157, 1);
+
   --color-yellow-600: rgba(167, 170, 32, 1);
 
   --color-green-25: rgba(245, 251, 245, 1);
   --color-green-500: rgba(17, 126, 17, 1);
 
 }
+
+
 
 .font-montserrat {
   font-family: var(--font-montserrat);

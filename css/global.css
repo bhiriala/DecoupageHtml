@@ -25,14 +25,12 @@
 
   --color-green-25: rgba(245, 251, 245, 1);
   --color-green-500: rgba(17, 126, 17, 1);
-
 }
-
-
 
 .font-montserrat {
   font-family: var(--font-montserrat);
 }
+
 .font-degular {
   font-family: var(--font-degular);
 }
@@ -54,8 +52,103 @@
 .scroll-container {
   overflow-x: auto;
   overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 
 .scroll-container:parent {
   position: relative;
+}
+
+.scroll-container > div > * {
+  scroll-snap-align: start;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-dropdown {
+  animation: dropdown 0.2s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.modal-overlay {
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  transition: transform 0.3s ease;
+}
+
+.modal-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-hidden .modal-content {
+  transform: translateX(-100%);
+}
+
+.container {
+  max-width: 1400px !important;
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1600px !important;
+  }
+}
+
+.custom-final-shape-desktop {
+  --r: 34px; 
+  --_m: #0000 100%, #000 calc(100% + 1px);
+
+  width: 300px;
+  aspect-ratio: 1.28;
+  background: #6C2358;
+  border-radius: 0 var(--r)/0 calc(2*var(--r));
+  padding-block: var(--r);
+  mask:
+    conic-gradient(#000 0 0) content-box,
+    radial-gradient(var(--r) at 0 50%, var(--_m)) 0% 50% no-repeat,
+    radial-gradient(var(--r) at 0 100%, var(--_m)) 100% 100% no-repeat;
+  mask-size: var(--r) var(--r);
+}
+
+.custom-final-shape-mobile {
+  --r: 20px; 
+  --_m: #0000 100%, #000 calc(100% + 1px);
+
+  width: 140px;
+  aspect-ratio: 1.6;
+  background: #6C2358;
+  border-radius: 0 var(--r)/0 calc(2*var(--r));
+  padding-block: calc(var(--r) / 2);
+  mask:
+    conic-gradient(#000 0 0) content-box,
+    radial-gradient(var(--r) at 0 50%, var(--_m)) 0% 50% no-repeat,
+    radial-gradient(var(--r) at 0 100%, var(--_m)) 100% 100% no-repeat;
+  mask-size: var(--r) var(--r);
 }

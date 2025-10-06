@@ -4,17 +4,12 @@ class HeroCard extends HTMLElement {
     const alt = this.getAttribute("alt") || "";
     const width = this.getAttribute("width") || "400";
     const mobileWidth = this.getAttribute("mobile-width") || "280";
-    
-    // Utiliser des classes Tailwind standards au lieu de classes dynamiques
+  
     this.className = `relative rounded-2xl lg:rounded-3xl overflow-hidden bg-gray-100 flex-shrink-0`;
-    
-    // Hauteur responsive avec style inline
     this.style.cssText = `
       width: ${mobileWidth}px;
       height: 160px;
     `;
-    
-    // Media query pour desktop
     const mediaQuery = window.matchMedia('(min-width: 1024px)');
     const updateSize = (e) => {
       if (e.matches) {
@@ -46,7 +41,6 @@ class HeroCard extends HTMLElement {
 
 customElements.define("hero-card", HeroCard);
 
-// Pagination dynamique
 document.addEventListener('DOMContentLoaded', function() {
   const scrollContainer = document.querySelector('.scroll-container');
   const paginationContainer = document.getElementById('pagination-dots');
@@ -56,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const cards = scrollContainer.querySelectorAll('hero-card');
   const totalCards = cards.length;
   
-  // Créer les dots de pagination
   function createDots() {
     paginationContainer.innerHTML = '';
     for (let i = 0; i < totalCards; i++) {
@@ -68,19 +61,16 @@ document.addEventListener('DOMContentLoaded', function() {
       paginationContainer.appendChild(dot);
     }
   }
-  
-  // Mettre à jour l'indicateur actif
   function updateActiveDot() {
     const scrollLeft = scrollContainer.scrollLeft;
     const containerWidth = scrollContainer.offsetWidth;
     const scrollWidth = scrollContainer.scrollWidth;
     
-    // Calculer l'index de la carte visible
     let currentIndex = 0;
     let accumulatedWidth = 0;
     
     cards.forEach((card, index) => {
-      const cardWidth = card.offsetWidth + 12; // 12px = gap
+      const cardWidth = card.offsetWidth + 12;
       accumulatedWidth += cardWidth;
       
       if (scrollLeft < accumulatedWidth - (containerWidth / 2)) {
@@ -90,10 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Limiter l'index au nombre total de cards
     currentIndex = Math.min(currentIndex, totalCards - 1);
     
-    // Mettre à jour les dots
     const dots = paginationContainer.querySelectorAll('span');
     dots.forEach((dot, index) => {
       if (index === currentIndex) {
@@ -103,18 +91,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-  
-  // Initialiser
   createDots();
   
-  // Écouter le scroll
   let scrollTimeout;
   scrollContainer.addEventListener('scroll', function() {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(updateActiveDot, 50);
   });
   
-  // Click sur les dots pour naviguer
   paginationContainer.addEventListener('click', function(e) {
     if (e.target.tagName === 'SPAN') {
       const index = parseInt(e.target.dataset.index);
@@ -130,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Re-créer les dots si la fenêtre est redimensionnée
   let resizeTimeout;
   window.addEventListener('resize', function() {
     clearTimeout(resizeTimeout);

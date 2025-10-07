@@ -157,10 +157,8 @@ export function initMultiTriggerModal(modalElement, triggerSelectors, options = 
   }
 }
 
-/**
- * Gère les modals fullscreen (comme le menu mobile)
- */
-export function initFullscreenModal(modalElement, triggerElement, options = {}) {
+
+export function initFullscreenModal(modalElement, triggerElement) {
   const trigger = triggerElement;
   const modal = modalElement;
   
@@ -187,14 +185,5 @@ export function initFullscreenModal(modalElement, triggerElement, options = {}) 
     }
   });
 
-  // Fermer avec Escape
-  if (options.closeOnEscape !== false) {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('modal-hidden')) {
-        modal.classList.add('modal-hidden');
-        trigger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
-    });
-  }
+  
 }

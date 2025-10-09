@@ -1,7 +1,3 @@
-// ============================================
-// CAROUSEL NAVIGATION - Navigation des carousels
-// ============================================
-
 class CarouselNavigation {
   constructor() {
     this.carousels = [
@@ -19,7 +15,7 @@ class CarouselNavigation {
       }
     ];
 
-    this.scrollAmount = 260; // Largeur d'une carte + gap
+    this.scrollAmount = 260; 
     
     this.init();
   }
@@ -36,8 +32,6 @@ class CarouselNavigation {
 
   setupCarousel(carousel) {
     const { container, prevBtn, nextBtn } = carousel;
-
-    // Navigation avec les boutons
     prevBtn.addEventListener('click', () => {
       this.scroll(container, -this.scrollAmount);
     });
@@ -46,14 +40,11 @@ class CarouselNavigation {
       this.scroll(container, this.scrollAmount);
     });
 
-    // Mettre à jour la visibilité des boutons selon la position
     this.updateButtonsVisibility(carousel);
     
     container.addEventListener('scroll', () => {
       this.updateButtonsVisibility(carousel);
     }, { passive: true });
-
-    // Support du scroll au toucher (mobile)
     this.setupTouchScroll(container);
   }
 
@@ -66,8 +57,6 @@ class CarouselNavigation {
 
   updateButtonsVisibility(carousel) {
     const { container, prevBtn, nextBtn } = carousel;
-    
-    // Désactiver le bouton prev si au début
     if (container.scrollLeft <= 10) {
       prevBtn.classList.add('opacity-50', 'cursor-not-allowed');
       prevBtn.disabled = true;
@@ -75,8 +64,6 @@ class CarouselNavigation {
       prevBtn.classList.remove('opacity-50', 'cursor-not-allowed');
       prevBtn.disabled = false;
     }
-
-    // Désactiver le bouton next si à la fin
     const maxScroll = container.scrollWidth - container.clientWidth;
     if (container.scrollLeft >= maxScroll - 10) {
       nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
@@ -112,51 +99,12 @@ class CarouselNavigation {
   }
 }
 
-// ============================================
-// HELPER: Ajouter un carousel dynamiquement
-// ============================================
-
-export function addCarousel(name, containerId, prevBtnId, nextBtnId) {
-  const container = document.getElementById(containerId);
-  const prevBtn = document.getElementById(prevBtnId);
-  const nextBtn = document.getElementById(nextBtnId);
-
-  if (!container || !prevBtn || !nextBtn) {
-    console.error(`Cannot add carousel "${name}": elements not found`);
-    return;
-  }
-
-  const carousel = { name, container, prevBtn, nextBtn };
-  const navigation = new CarouselNavigation();
-  navigation.setupCarousel(carousel);
-}
-
-// ============================================
-// HELPER: Scroll programmatique
-// ============================================
-
-export function scrollCarousel(containerId, direction = 'next') {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  const amount = direction === 'next' ? 260 : -260;
-  container.scrollBy({
-    left: amount,
-    behavior: 'smooth'
-  });
-}
-
-// ============================================
-// INITIALISATION
-// ============================================
-
 export function initCarouselNavigation() {
   document.addEventListener('DOMContentLoaded', () => {
     new CarouselNavigation();
   });
 }
 
-// Auto-initialisation
 if (document.readyState === 'loading') {
   initCarouselNavigation();
 } else {

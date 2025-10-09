@@ -53,12 +53,11 @@
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
 }
 
-.scroll-container:parent {
+/* .scroll-container:parent {
   position: relative;
-}
+} */
 
 .scroll-container > div > * {
   scroll-snap-align: start;
@@ -115,11 +114,11 @@
   max-width: 1400px !important;
 }
 
-@media (min-width: 1536px) {
+/* @media (min-width: 1536px) {
   .container {
     max-width: 1600px !important;
   }
-}
+} */
 
 .custom-final-shape-desktop {
   --r: 34px; 

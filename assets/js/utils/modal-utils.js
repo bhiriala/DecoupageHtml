@@ -1,14 +1,8 @@
-// ============================================
-// MODAL UTILITIES - Logique réutilisable
-// ============================================
-
 export class ModalManager {
   constructor(modalElement, triggerElement, options = {}) {
     this.modal = modalElement;
     this.trigger = triggerElement;
     this.options = {
-      closeOnEscape: true,
-      closeOnOutsideClick: true,
       closeOnScroll: true,
       repositionOnResize: true,
       mobileBreakpoint: 768,
@@ -23,7 +17,6 @@ export class ModalManager {
   }
 
   init() {
-    // Event listeners
     if (this.trigger) {
       this.trigger.addEventListener('click', (e) => {
         e.preventDefault();
@@ -31,24 +24,6 @@ export class ModalManager {
       });
     }
 
-    if (this.options.closeOnEscape) {
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && this.isOpen) {
-          this.close();
-        }
-      });
-    }
-
-    if (this.options.closeOnOutsideClick) {
-      document.addEventListener('click', (e) => {
-        const isClickInside = this.modal.contains(e.target);
-        const isClickOnTrigger = this.trigger?.contains(e.target);
-        
-        if (!isClickInside && !isClickOnTrigger && this.isOpen) {
-          this.close();
-        }
-      });
-    }
 
     if (this.options.closeOnScroll) {
       window.addEventListener('scroll', () => {
@@ -76,8 +51,6 @@ export class ModalManager {
     this.position();
     this.modal.classList.remove('hidden');
     this.isOpen = true;
-    
-    // Callback personnalisé
     if (this.options.onOpen) {
       this.options.onOpen();
     }
@@ -86,8 +59,6 @@ export class ModalManager {
   close() {
     this.modal.classList.add('hidden');
     this.isOpen = false;
-    
-    // Callback personnalisé
     if (this.options.onClose) {
       this.options.onClose();
     }
@@ -100,16 +71,13 @@ export class ModalManager {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const top = rect.bottom + scrollTop + this.options.gap;
 
-    // Responsive positioning
     if (window.innerWidth >= this.options.mobileBreakpoint) {
-      // Desktop: align right
       const right = window.innerWidth - rect.right;
       this.modal.style.top = `${top}px`;
       this.modal.style.right = `${right}px`;
       this.modal.style.left = 'auto';
       this.modal.style.transform = 'none';
     } else {
-      // Mobile: center
       this.modal.style.top = `${top}px`;
       this.modal.style.left = '50%';
       this.modal.style.right = 'auto';
@@ -118,17 +86,10 @@ export class ModalManager {
   }
 }
 
-// ============================================
-// HELPER FUNCTIONS
-// ============================================
 
-/**
- * Gère plusieurs triggers pour un même modal
- */
 export function initMultiTriggerModal(modalElement, triggerSelectors, options = {}) {
   const triggers = document.querySelectorAll(triggerSelectors);
   let currentTrigger = null;
-
   triggers.forEach(trigger => {
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
@@ -136,25 +97,12 @@ export function initMultiTriggerModal(modalElement, triggerSelectors, options = 
       
       const manager = new ModalManager(modalElement, trigger, {
         ...options,
-        closeOnOutsideClick: false // Géré manuellement ci-dessous
       });
       
       manager.open();
     });
   });
 
-  // Gestion du clic extérieur pour multi-triggers
-  if (options.closeOnOutsideClick !== false) {
-    document.addEventListener('click', (e) => {
-      const isClickInside = modalElement.contains(e.target);
-      const isClickOnAnyTrigger = Array.from(triggers).some(t => t.contains(e.target));
-      const isOpen = !modalElement.classList.contains('hidden');
-      
-      if (!isClickInside && !isClickOnAnyTrigger && isOpen) {
-        modalElement.classList.add('hidden');
-      }
-    });
-  }
 }
 
 
@@ -176,7 +124,6 @@ export function initFullscreenModal(modalElement, triggerElement) {
     }
   });
 
-  // Fermer en cliquant sur l'overlay
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       modal.classList.add('modal-hidden');

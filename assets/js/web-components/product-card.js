@@ -65,24 +65,8 @@ class ProductCard extends HTMLElement {
       </article>
     `;
 
-    // Vérifier l'état initial du bouton (si le produit est déjà dans le panier)
-    this.checkCartState();
   }
-
-  // Vérifier si le produit est déjà dans le panier au chargement
-  checkCartState() {
-    const btn = this.querySelector('.add-to-cart-btn');
-    const iconPlus = this.querySelector('.icon-plus');
-    const iconCheck = this.querySelector('.icon-check');
-    const productId = btn.getAttribute('data-product-id');
-
-    // Attendre que cartManager soit disponible
-    if (window.cartManager && window.cartManager.isInCart(productId)) {
-      btn.classList.add('added');
-      iconPlus.classList.add('hidden');
-      iconCheck.classList.remove('hidden');
-    }
-  }
+ 
 }
 
 customElements.define("product-card", ProductCard);

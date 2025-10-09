@@ -1,7 +1,3 @@
-// ============================================
-// CART MODAL - Gestion du panier
-// ============================================
-
 import { initMultiTriggerModal } from '../utils/modal-utils.js';
 
 class CartModal {
@@ -10,19 +6,15 @@ class CartModal {
     this.closeBtn = document.getElementById('closeCartModal');
     this.emptyState = document.getElementById('emptyCartState');
     this.itemsList = document.getElementById('cartItemsList');
-    this.footer = document.getElementById('cartFooter');
     this.cartButtons = document.querySelectorAll('a[href*="cart"]');
     
     if (!this.modal) {
-      console.warn('Cart modal element not found');
       return;
     }
-
     this.init();
   }
 
   init() {
-    // Initialiser le modal avec multi-triggers (desktop + mobile)
     initMultiTriggerModal(
       this.modal,
       'a[href*="cart"]',
@@ -35,56 +27,41 @@ class CartModal {
       }
     );
 
-    // Bouton de fermeture manuel
     this.closeBtn?.addEventListener('click', () => {
       this.modal.classList.add('hidden');
     });
 
-    // Écouter les mises à jour du panier
     window.addEventListener('cartUpdated', () => {
       if (!this.modal.classList.contains('hidden')) {
         this.render();
       }
     });
 
-    // Exposer les fonctions globalement pour les boutons inline
     window.updateCartQuantity = this.updateQuantity.bind(this);
     window.removeFromCart = this.removeItem.bind(this);
   }
 
   render() {
     const cart = this.getCart();
-    const totalItems = this.getTotalItems();
-    const totalPrice = this.getTotalPrice();
-
     if (cart.length === 0) {
       this.showEmptyState();
     } else {
-      this.showCartItems(cart, totalPrice);
+      this.showCartItems(cart);
     }
   }
 
   showEmptyState() {
     this.emptyState?.classList.remove('hidden');
     this.itemsList?.classList.add('hidden');
-    this.footer?.classList.add('hidden');
   }
 
-  showCartItems(cart, totalPrice) {
+  showCartItems(cart) {
     this.emptyState?.classList.add('hidden');
     this.itemsList?.classList.remove('hidden');
-    this.footer?.classList.remove('hidden');
-
     if (this.itemsList) {
       this.itemsList.innerHTML = cart.map(item => this.renderCartItem(item)).join('');
     }
 
-    // Mettre à jour les totaux
-    const subtotalEl = document.getElementById('cartSubtotal');
-    const totalEl = document.getElementById('cartTotal');
-    
-    if (subtotalEl) subtotalEl.textContent = `$${totalPrice}`;
-    if (totalEl) totalEl.textContent = `$${totalPrice}`;
   }
 
   renderCartItem(item) {
@@ -159,9 +136,6 @@ class CartModal {
     `;
   }
 
-  // ============================================
-  // ACTIONS DU PANIER
-  // ============================================
 
   updateQuantity(productId, newQuantity) {
     if (window.cartManager) {
@@ -175,26 +149,11 @@ class CartModal {
     }
   }
 
-  // ============================================
-  // GETTERS (délégation au cartManager)
-  // ============================================
-
   getCart() {
     return window.cartManager ? window.cartManager.getCart() : [];
   }
-
-  getTotalItems() {
-    return window.cartManager ? window.cartManager.getTotalItems() : 0;
-  }
-
-  getTotalPrice() {
-    return window.cartManager ? window.cartManager.getTotalPrice() : '0.00';
-  }
 }
 
-// ============================================
-// INITIALISATION
-// ============================================
 
 export function initCartModal() {
   document.addEventListener('DOMContentLoaded', () => {
@@ -202,7 +161,6 @@ export function initCartModal() {
   });
 }
 
-// Auto-initialisation si importé directement
 if (document.readyState === 'loading') {
   initCartModal();
 } else {

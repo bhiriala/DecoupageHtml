@@ -1,45 +1,36 @@
 class HeroCard extends HTMLElement {
   connectedCallback() {
-    const src = this.getAttribute("src") || "";
-    const alt = this.getAttribute("alt") || "";
-    const width = this.getAttribute("width") || "400";
-    const mobileWidth = this.getAttribute("mobile-width") || "280";
-  
-    this.className = `relative rounded-2xl lg:rounded-3xl overflow-hidden bg-gray-100 flex-shrink-0`;
-    this.style.cssText = `
-      width: ${mobileWidth}px;
-      height: 160px;
-    `;
-    const mediaQuery = window.matchMedia('(min-width: 1024px)');
-    const updateSize = (e) => {
-      if (e.matches) {
-        this.style.cssText = `
-          width: ${width}px;
-          height: 240px;
-        `;
-      } else {
-        this.style.cssText = `
-          width: ${mobileWidth}px;
-          height: 160px;
-        `;
-      }
-    };
-    
-    updateSize(mediaQuery);
-    mediaQuery.addListener(updateSize);
+    const src = this.getAttribute('src') || '';
+    const alt = this.getAttribute('alt') || '';
+
+    const baseClasses = [
+      'relative',
+      'rounded-2xl',
+      'lg:rounded-3xl',
+      'overflow-hidden',
+      'bg-gray-100',
+      'flex-shrink-0',
+      'w-[280px]',
+      'h-[160px]',
+      'lg:w-[600px]',
+      'lg:h-[240px]'
+    ].join(' ');
+
+    this.className = baseClasses;
 
     this.innerHTML = `
-      <img 
+      <img
         src="${src}" 
         alt="${alt}" 
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover block"
         loading="lazy"
       />
     `;
   }
-}
 
-customElements.define("hero-card", HeroCard);
+  
+}
+customElements.define('hero-card', HeroCard);
 
 document.addEventListener('DOMContentLoaded', function() {
   const scrollContainer = document.querySelector('.scroll-container');
@@ -48,39 +39,21 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!scrollContainer || !paginationContainer) return;
   
   const cards = scrollContainer.querySelectorAll('hero-card');
-  const totalCards = cards.length;
   
   function createDots() {
     paginationContainer.innerHTML = '';
-    for (let i = 0; i < totalCards; i++) {
+    cards.forEach((_, index) => {
       const dot = document.createElement('span');
-      dot.className = i === 0 
-        ? 'w-8 h-1 bg-[#B6349A] rounded-full transition-all duration-300' 
-        : 'w-2 h-1 bg-gray-300 rounded-full transition-all duration-300';
-      dot.dataset.index = i;
+      dot.className = 'w-2 h-1 bg-gray-300 rounded-full transition-all duration-300';
+      dot.dataset.index = index;
       paginationContainer.appendChild(dot);
-    }
-  }
-  function updateActiveDot() {
-    const scrollLeft = scrollContainer.scrollLeft;
-    const containerWidth = scrollContainer.offsetWidth;
-    const scrollWidth = scrollContainer.scrollWidth;
-    
-    let currentIndex = 0;
-    let accumulatedWidth = 0;
-    
-    cards.forEach((card, index) => {
-      const cardWidth = card.offsetWidth + 12;
-      accumulatedWidth += cardWidth;
-      
-      if (scrollLeft < accumulatedWidth - (containerWidth / 2)) {
-        if (currentIndex === 0) {
-          currentIndex = index;
-        }
-      }
     });
-    
-    currentIndex = Math.min(currentIndex, totalCards - 1);
+  }
+  
+  function updateActiveDot() {
+    const scrollPosition = scrollContainer.scrollLeft;
+    const cardWidth = cards[0].offsetWidth + 3; // largeur carte + gap
+    const currentIndex = Math.round(scrollPosition / cardWidth);
     
     const dots = paginationContainer.querySelectorAll('span');
     dots.forEach((dot, index) => {
@@ -91,37 +64,10 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+  
+  
   createDots();
-  
-  let scrollTimeout;
-  scrollContainer.addEventListener('scroll', function() {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(updateActiveDot, 50);
-  });
-  
-  paginationContainer.addEventListener('click', function(e) {
-    if (e.target.tagName === 'SPAN') {
-      const index = parseInt(e.target.dataset.index);
-      const card = cards[index];
-      
-      if (card) {
-        card.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'nearest', 
-          inline: 'start' 
-        });
-      }
-    }
-  });
-  
-  let resizeTimeout;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      const isMobile = window.innerWidth < 1024;
-      if (isMobile) {
-        updateActiveDot();
-      }
-    }, 200);
-  });
+  updateActiveDot();
+ 
+  scrollContainer.addEventListener('scroll', updateActiveDot);
 });
